@@ -1,0 +1,4 @@
+#Tue Jul 25 11:52:42 SGT 2017
+base.0=E\:\\Github\\BirthdayIdentifier\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\5\\slice_2
+renamed.0=classes.dex
+file.0=E\:\\Github\\BirthdayIdentifier\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\5\\slice_2\\classes.dex

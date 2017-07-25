@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Birthday Identifier</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="text_about">About</string>
+    <string name="text_help">Help</string>
+    <string name="text_enter">Click Here to Enter Birthday</string>
+    <string name="link_text_manual"><b>text2:</b> This is some other
+  text, with a <a href="http://www.google.com">link</a> specified
+  via an &lt;a&gt; tag.  Use a \"tel:\" URL
+  to <a href="tel:4155551212">dial a phone number</a>.</string>
+    <string name="about_content">This very useful app is Developed by <b>Lazy Juan.</b>\n\nWant to stay in contact with me? Send me a hate mail by clicking <b>Mail me</b> button below.\n\n <b>Credits to:</b>\n\n<a href="https://www.iconfinder.com/icons/53256/birthday_cake_icon#size=512">IconDrawer</a>          - for the cake image that serves also as the app icon.\n\n<a href="https://www.iconfinder.com/icons/175446/sad_icon#size=512">Visual Pham</a>          - for the smiley icon.</string>
+
+    <string name="version_name">1.0</string>
+    <string name="success">Congratulations! Happy Birthday!</string>
+    <string name="fail">Sorry. Today is not your Birthday. Try again tomorrow.</string>
+
+</resources>
