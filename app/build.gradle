@@ -1,13 +1,15 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 20
+    compileSdkVersion 25
     buildToolsVersion "26.0.0"
 
     defaultConfig {
         applicationId "lazy.juan.birthday.identifier"
-        minSdkVersion 8
-        targetSdkVersion 21
+        minSdkVersion 9
+        targetSdkVersion 25
+        versionName "1.0"
+        versionCode 13
     }
 
     buildTypes {
@@ -19,6 +21,6 @@ android {
 }
 
 dependencies {
-    compile 'com.android.support:appcompat-v7:20.0.0'
-    compile 'com.android.support:support-v4:20.0.0'
+    compile 'com.android.support:appcompat-v7:25.3.1'
+    compile 'com.android.support:support-v4:25.3.1'
 }
