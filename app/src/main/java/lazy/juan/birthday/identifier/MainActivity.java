@@ -1,19 +1,16 @@
 package lazy.juan.birthday.identifier;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
 import android.text.method.LinkMovementMethod;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.DatePicker;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -21,22 +18,22 @@ import android.widget.Toast;
 
 import java.util.Calendar;
 
-public class MainActivity extends ActionBarActivity {
-    final Calendar c = Calendar.getInstance();
-    int mYear = c.get(Calendar.YEAR);
-    int mMonth = c.get(Calendar.MONTH);
-    int mDay = c.get(Calendar.DAY_OF_MONTH);
-    String currentDate = mMonth + "/" + mDay + "/" + mYear;
-    ImageView iconDisplay;
-    TextView textDisplay;
-    Boolean isCanceled = false;
+public class MainActivity extends Activity {
+    private final Calendar c = Calendar.getInstance();
+    private int mYear = c.get(Calendar.YEAR);
+    private int mMonth = c.get(Calendar.MONTH);
+    private int mDay = c.get(Calendar.DAY_OF_MONTH);
+    private String currentDate = mMonth + "/" + mDay + "/" + mYear;
+    private ImageView iconDisplay;
+    private TextView textDisplay;
+    private Boolean isCanceled = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        iconDisplay = (ImageView) findViewById(R.id.ivSmiley);
-        textDisplay = (TextView) findViewById(R.id.tvMessage);
+        iconDisplay = findViewById(R.id.ivSmiley);
+        textDisplay = findViewById(R.id.tvMessage);
     }
 
     @Override
@@ -55,46 +52,32 @@ public class MainActivity extends ActionBarActivity {
                 AlertDialog.Builder about = new AlertDialog.Builder(
                         MainActivity.this);
                 about.setTitle("About");
-                TextView textView = (TextView) layout
+                TextView textView = layout
                         .findViewById(R.id.infoDetailText);
                 textView.setText(R.string.about_content);
                 textView.setMovementMethod(LinkMovementMethod.getInstance());
                 about.setView(layout);
-                about.setPositiveButton("Mail me", new OnClickListener() {
-
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        Intent i = new Intent(Intent.ACTION_SEND);
-                        i.setType("message/rfc822");
-                        i.putExtra(Intent.EXTRA_EMAIL,
-                                new String[]{"wwwdotphilip@gmail.com"});
-                        i.putExtra(Intent.EXTRA_SUBJECT, "Birthday identifier");
-                        i.putExtra(Intent.EXTRA_TEXT, "Hello, ");
-                        try {
-                            startActivity(Intent.createChooser(i, "Send mail..."));
-                        } catch (android.content.ActivityNotFoundException ex) {
-                            message("There are no email clients installed.");
-                        }
+                about.setPositiveButton("Mail me", (dialog, which) -> {
+                    Intent i = new Intent(Intent.ACTION_SEND);
+                    i.setType("message/rfc822");
+                    i.putExtra(Intent.EXTRA_EMAIL,
+                            new String[]{"wwwdotphilip@gmail.com"});
+                    i.putExtra(Intent.EXTRA_SUBJECT, "Birthday identifier");
+                    i.putExtra(Intent.EXTRA_TEXT, "Hello, ");
+                    try {
+                        startActivity(Intent.createChooser(i, "Send mail..."));
+                    } catch (android.content.ActivityNotFoundException ex) {
+                        message("There are no email clients installed.");
                     }
                 });
-                about.setNegativeButton("Close", new OnClickListener() {
-
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.dismiss();
-                    }
-                });
-                about.setNeutralButton("Rate this app", new OnClickListener() {
-
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        Uri uri = Uri.parse("market://details?id=" + getPackageName());
-                        Intent goToMarket = new Intent(Intent.ACTION_VIEW, uri);
-                        try {
-                            startActivity(goToMarket);
-                        } catch (Exception e) {
-                            message("Google Play is not available in your device.");
-                        }
+                about.setNegativeButton("Close", (dialog, which) -> dialog.dismiss());
+                about.setNeutralButton("Rate this app", (dialog, which) -> {
+                    Uri uri = Uri.parse("market://details?id=" + getPackageName());
+                    Intent goToMarket = new Intent(Intent.ACTION_VIEW, uri);
+                    try {
+                        startActivity(goToMarket);
+                    } catch (Exception e) {
+                        message("Google Play is not available in your device.");
                     }
                 });
                 AlertDialog displayInfo = about.create();
@@ -108,28 +91,15 @@ public class MainActivity extends ActionBarActivity {
     public void showDateDialog(View v) {
         isCanceled = false;
         DatePickerDialog dpd = new DatePickerDialog(this,
-                new DatePickerDialog.OnDateSetListener() {
-
-                    @Override
-                    public void onDateSet(DatePicker view, int year,
-                                          int monthOfYear, int dayOfMonth) {
-                        if (!isCanceled) {
-                            System.out.println(monthOfYear + "/" + dayOfMonth + "/"
-                                    + year);
-                            compareDate(monthOfYear + "/" + dayOfMonth + "/"
-                                    + year);
-                        }
+                (view, year, monthOfYear, dayOfMonth) -> {
+                    if (!isCanceled) {
+                        compareDate(monthOfYear + "/" + dayOfMonth + "/"
+                                + year);
                     }
                 }, mYear, mMonth, mDay);
         dpd.setTitle("Set date");
         dpd.setButton(DatePickerDialog.BUTTON_NEGATIVE, "Cancel",
-                new DialogInterface.OnClickListener() {
-
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        isCanceled = true;
-                    }
-                });
+                (dialog, which) -> isCanceled = true);
         dpd.setCancelable(false);
         dpd.show();
     }
