@@ -1,7 +1,0 @@
-#Tue Jul 25 11:52:42 SGT 2017
-base.0=E\:\\Github\\BirthdayIdentifier\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10000\\instant-run-bootstrap_dd07341beb93bd6931c5ebbe3b3fc0d83ff4703b
-renamed.1=classes.dex
-renamed.0=classes2.dex
-file.1=E\:\\Github\\BirthdayIdentifier\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10000\\instant-run_a05c985c0e7163a82d5f9a64e5ce1b9ff12714be\\classes.dex
-base.1=E\:\\Github\\BirthdayIdentifier\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10000\\instant-run_a05c985c0e7163a82d5f9a64e5ce1b9ff12714be
-file.0=E\:\\Github\\BirthdayIdentifier\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10000\\instant-run-bootstrap_dd07341beb93bd6931c5ebbe3b3fc0d83ff4703b\\classes.dex
